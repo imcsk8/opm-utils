@@ -20,6 +20,8 @@ def list_repos(org_name):
     repos = get_org_repos(org_name)
     count = 0
     for repo in repos:
+        if repo.name == "ci-scripts":
+            continue
         url = "https://github.com/%s/%s/archive/%s-master-tag.tar.gz" % (org_name, repo.name, repo.name)
         print "Source%s: %s" % (count, url)
         count += 1
@@ -28,6 +30,8 @@ def download_org_repos(org_name):
     repos = get_org_repos(org_name)
     count = 0
     for repo in repos:
+        if repo.name == "ci-scripts":
+            continue
         url = "https://github.com/%s/%s/archive/master-tag.tar.gz" % (org_name, repo.name)
         spec_url = "https://github.com/%s/%s/archive/%s-master-tag.tar.gz" % (org_name, repo.name, repo.name)
         print "Source%s: %s" % (count, spec_url)
