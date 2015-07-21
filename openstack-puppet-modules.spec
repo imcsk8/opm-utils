@@ -152,7 +152,6 @@ install -d -m 0755 %{buildroot}/%{_datadir}/openstack-puppet/modules/
 
 %files
 %{_datadir}/openstack-puppet/modules/*
-%{_datadir}/openstack-puppet/Puppetfile
 
 
 %changelog
