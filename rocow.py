@@ -25,6 +25,17 @@ def list_repos(org_name):
         url = "https://github.com/%s/%s/archive/%s-master-tag.tar.gz" % (org_name, repo.name, repo.name)
         print "Source%s: %s" % (count, url)
         count += 1
+    sources(repos)
+
+def sources(repos):
+    count = 1
+    for repo in repos:
+        if repo.name == "ci-scripts":
+            continue
+            count -= 1
+        print "%setup -T -D -a " + str(count) + " -c -q -n %{name}-%{version}"
+        count += 1
+
 
 def download_org_repos(org_name):
     repos = get_org_repos(org_name)
